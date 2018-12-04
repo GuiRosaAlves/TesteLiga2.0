@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: a0e1a1a2c966a6f40a6e85adebc1288f
+timeCreated: 1491846533
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Poplar Std
+  fontNames:
+  - Poplar Std
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
