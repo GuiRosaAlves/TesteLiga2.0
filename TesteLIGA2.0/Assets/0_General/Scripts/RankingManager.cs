@@ -16,34 +16,24 @@ public enum SortingType
     Descending = 0
 }
 
-public class HighScoreManager : MonoBehaviour //TODO: Rename this RankingManager
+public class RankingManager : MonoBehaviour
 {
     private List<PlayerStat> _scoreBoard;
     private JsonDataController<PlayerStat> _jsonController;
 
-    private List<PlayerStat> _debugArray = new List<PlayerStat>()
-    {
-        new PlayerStat() {Name = "Guilhermin", Score = 120}, new PlayerStat() {Name = "Dieguin", Score = 60},
-        new PlayerStat() {Name = "Dylanzin", Score = 350}, new PlayerStat() {Name = "Dinozin", Score = 250}
-    }; //TODO: Remove later!!!
-
     private void Awake()
     {
         _jsonController = new JsonDataController<PlayerStat>("score_board_data");
-        _scoreBoard = SortScoreBoard(_jsonController.LoadDataList(), SortingType.Descending);
-        
-        LogArray(_scoreBoard); //TODO: Remove later!!!
-        Debug.Log("-------------------------------------"); //TODO: Remove later!!!
-        _jsonController.SaveData(SortScoreBoard(_debugArray, SortingType.Ascending)); //TODO: Remove later!!!
+//        _scoreBoard = SortScoreBoard(_jsonController.LoadDataList(), SortingType.Descending);
     }
 
     public void AddScore(PlayerStat newStat)
     {
         _scoreBoard.Add(newStat);
-        _scoreBoard = SortScoreBoard(_scoreBoard, SortingType.Descending);
-        
-        if (_scoreBoard.Count >= 11)
-            _scoreBoard.RemoveAt(10);   //TODO: Maybe need to tweak this later
+        _jsonController.SaveData(_scoreBoard);
+//        _scoreBoard = SortScoreBoard(_scoreBoard, SortingType.Descending);
+//        if (_scoreBoard.Count >= 11)
+//            _scoreBoard.RemoveAt(10);   //TODO: Maybe need to tweak this later
     }
 
     public void ResetScoreBoard()
@@ -66,10 +56,12 @@ public class HighScoreManager : MonoBehaviour //TODO: Rename this RankingManager
     {
         if (stats != null)
         {
+            Debug.Log("--------------------------");
             for (int i = 0; i < stats.Count; i++)
             {
                 Debug.Log("Name: " + stats[i].Name + " Score: " + stats[i].Score);
             }
+            Debug.Log("--------------------------");
         }
     }
 }

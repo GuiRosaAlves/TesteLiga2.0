@@ -35,7 +35,6 @@ public class _App : MonoBehaviour
         float pauseEndTime = Time.realtimeSinceStartup + seconds;
         while (Time.realtimeSinceStartup < pauseEndTime)
         {
-            Debug.Log(pauseEndTime);
             yield return 0;
         }
         Time.timeScale = 1;
