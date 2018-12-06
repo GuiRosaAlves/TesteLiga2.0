@@ -14,11 +14,11 @@ TagManager:
   - 
   - 
   - Particles
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Ground
+  - Player
+  - Enemy
+  - Projectile
+  - Collectable
   - 
   - 
   - 

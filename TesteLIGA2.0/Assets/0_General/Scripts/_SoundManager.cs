@@ -4,6 +4,13 @@ public class _SoundManager : MonoBehaviour
 {
     [SerializeField] private AudioSource _aS;
 
+
+    private void Awake()
+    {
+        if (!PlayerPrefs.HasKey("sound"))
+            IsSoundEnabled = true;
+    }
+
     public bool IsSoundEnabled
     {
         get
@@ -36,6 +43,7 @@ public class _SoundManager : MonoBehaviour
 
     public void ChangeSoundState()
     {
+        Debug.Log("True");
         IsSoundEnabled = !IsSoundEnabled;
     }
 }

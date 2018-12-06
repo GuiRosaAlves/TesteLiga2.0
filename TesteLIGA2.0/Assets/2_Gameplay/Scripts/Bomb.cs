@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,6 +20,9 @@ public class Bomb : MonoBehaviour
 
     private void Explode()
     {
+        if (_App.SoundManager)
+            _App.SoundManager.Play(_sfx.Get("explode").audio);
+        
         List<GameObject> objectsInRange = new List<GameObject>();
         RaycastHit2D[] hitResult;
 
@@ -34,15 +38,15 @@ public class Bomb : MonoBehaviour
             }
         }
 
-        //TODO: APPLY DAMAGE TO OBJECTS HIT
+        //TODO: Modify This Garbage code
         for (int i = 0; i < objectsInRange.Count; i++)
         {
             Vector2 knockBackDir = objectsInRange[i].transform.position - transform.position;
 
-            PlayerController player = objectsInRange[i].GetComponent<PlayerController>();
+            Character player = objectsInRange[i].GetComponent<Character>();
             Enemy enemy = objectsInRange[i].GetComponent<Enemy>();
 
-            if (objectsInRange[i].GetComponent<PlayerController>())
+            if (objectsInRange[i].GetComponent<Character>())
             {
                 player.TakeDamage(_damage, knockBackDir, _explosionForce);
             }
@@ -52,7 +56,7 @@ public class Bomb : MonoBehaviour
             }
         }
 
-        Destroy(gameObject, 0.3f);
+        StartCoroutine("DestroyObject");
     }
 
     protected void Awake ()
@@ -79,5 +83,11 @@ public class Bomb : MonoBehaviour
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, _explosionRadius);
         }
+    }
+
+    IEnumerator DestroyObject()
+    {
+        yield return new WaitUntil(() => !_animator.GetCurrentAnimatorStateInfo(0).IsTag("Explode"));
+        Destroy(gameObject);
     }
 }

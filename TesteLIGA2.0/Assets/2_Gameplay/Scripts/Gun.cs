@@ -5,19 +5,25 @@ using UnityEngine;
 [System.Serializable]
 public class Gun
 {
-    [SerializeField] private SFXDictionary _sfx;
+    [SerializeField] private AudioClip _gunshotFX;
     [SerializeField] private Projectile _bulletPrefab;
     [SerializeField] private float _fireRate;
-    private float timer;
+    [SerializeField] private float _shakeAmt;
+    private float _timer;
 
     public void Fire(Vector3 firePoint, Quaternion bulletRot)
     {
-        if (Time.time > timer)
+        if (Time.time > _timer)
         {
             if (_bulletPrefab != null)
             {
+                if (_App.SoundManager)
+                    _App.SoundManager.Play(_gunshotFX);
+//                if (CameraController.instance)
+//                    CameraController.instance.ScreenShake(_shakeAmt);
+                
                 GameObject.Instantiate(_bulletPrefab, firePoint, bulletRot);
-                timer = Time.time + 1/_fireRate;
+                _timer = Time.time + 1/_fireRate;
             }
             else
             {

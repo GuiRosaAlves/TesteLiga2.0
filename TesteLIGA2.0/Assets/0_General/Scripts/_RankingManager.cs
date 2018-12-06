@@ -16,21 +16,54 @@ public enum SortingType
     Descending = 0
 }
 
-public class RankingManager : MonoBehaviour
+public class _RankingManager : MonoBehaviour
 {
-    private List<PlayerStat> _scoreBoard;
+    public List<PlayerStat> ScoreBoard { get; private set; }
     private JsonDataController<PlayerStat> _jsonController;
+    public PlayerStat StatBuffer { get; set; } 
 
     private void Awake()
     {
         _jsonController = new JsonDataController<PlayerStat>("score_board_data");
-//        _scoreBoard = SortScoreBoard(_jsonController.LoadDataList(), SortingType.Descending);
+        ScoreBoard = SortScoreBoard(_jsonController.LoadDataList(), SortingType.Descending);
+        if (ScoreBoard == null)
+            ScoreBoard = new List<PlayerStat>();
     }
 
+    public bool CheckHighScore(PlayerStat stat)
+    {
+        if (ScoreBoard == null)
+            return false;
+        if (ScoreBoard.Count == 0)
+        {
+            ScoreBoard.Add(stat);
+            return true;
+        }
+
+        for (int i = 0; i < 10; i++)
+        {
+            if (i < ScoreBoard.Count)
+            {
+                if (stat.Score > ScoreBoard[i].Score)
+                {
+                    ScoreBoard.Add(stat);
+                    return true;
+                }
+            }
+            else
+            {
+                ScoreBoard.Add(stat);
+                return true;
+            }
+        }
+
+        return false;
+    }
+    
     public void AddScore(PlayerStat newStat)
     {
-        _scoreBoard.Add(newStat);
-        _jsonController.SaveData(_scoreBoard);
+        ScoreBoard.Add(newStat);
+        _jsonController.SaveData(ScoreBoard);
 //        _scoreBoard = SortScoreBoard(_scoreBoard, SortingType.Descending);
 //        if (_scoreBoard.Count >= 11)
 //            _scoreBoard.RemoveAt(10);   //TODO: Maybe need to tweak this later
@@ -38,8 +71,8 @@ public class RankingManager : MonoBehaviour
 
     public void ResetScoreBoard()
     {
-        _scoreBoard = new List<PlayerStat>();
-        _jsonController.SaveData(_scoreBoard);
+        ScoreBoard = new List<PlayerStat>();
+        _jsonController.SaveData(ScoreBoard);
     }
 
     public static List<PlayerStat> SortScoreBoard(List<PlayerStat> scoreBoard, SortingType filter)

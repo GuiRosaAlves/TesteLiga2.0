@@ -66,8 +66,8 @@ public class Enemy : MonoBehaviour
             if (hitResult && hitResult.transform.tag == "Player")
             {
                 _targetPosition = hitResult.transform;
-                if (AudioManager.instance)
-                    AudioManager.instance.Play(_sfx.Get("Alerted").audio);
+                if (_App.SoundManager)
+                    _App.SoundManager.Play(_sfx.Get("Alerted").audio);
                 _currState = EnemyStates.Follow;
                 AllowMovement();
             }
@@ -102,7 +102,7 @@ public class Enemy : MonoBehaviour
 
     protected void OnTriggerEnter2D(Collider2D coll)
     {
-        PlayerController player = coll.GetComponent<PlayerController>();
+        Character player = coll.GetComponent<Character>();
         if (player)
         {
             Vector2 knockBackDir = (_moveVector.x > 0) ? Vector2.left : Vector2.right;
@@ -143,13 +143,13 @@ public class Enemy : MonoBehaviour
 
         if (CurrHealth <= 0)
         {
-            if (AudioManager.instance)
-                AudioManager.instance.Play(_sfx.Get("Death").audio);
+            if (_App.SoundManager)
+                _App.SoundManager.Play(_sfx.Get("Death").audio);
             _animator.SetBool("IsDead", true);
             _animator.SetTrigger("Die");
         }
-        if (AudioManager.instance)
-            AudioManager.instance.Play(_sfx.Get("Hurt").audio);
+        if (_App.SoundManager)
+            _App.SoundManager.Play(_sfx.Get("Hurt").audio);
         StopMovement();
 
         if (_animator)
@@ -166,8 +166,8 @@ public class Enemy : MonoBehaviour
         CurrHealth -= damage;
         if (CurrHealth <= 0)
         {
-            if (AudioManager.instance)
-                AudioManager.instance.Play(_sfx.Get("Death").audio);
+            if (_App.SoundManager)
+                _App.SoundManager.Play(_sfx.Get("Death").audio);
             _animator.SetBool("IsDead", true);
             _animator.SetTrigger("Die");
         }
@@ -176,8 +176,8 @@ public class Enemy : MonoBehaviour
             _rigidBody.velocity = Vector2.zero;
             _rigidBody.AddForce(knockBackDir * knockBackForce, ForceMode2D.Impulse);
         }
-        if (AudioManager.instance)
-            AudioManager.instance.Play(_sfx.Get("Hurt").audio);
+        if (_App.SoundManager)
+            _App.SoundManager.Play(_sfx.Get("Hurt").audio);
 
         StopMovement();
 

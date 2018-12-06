@@ -1,11 +1,17 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class CameraController : MonoBehaviour
 {
+    public static CameraController instance { get; private set; }
+    
     [SerializeField] private Transform _cameraBounds;
-
+//    [SerializeField] private Vector4 _offsetBounds;
+//    [SerializeField] private float _screenShakeDuration;
+    
     private Vector2 _size;
     private Vector2 _offset;
 
@@ -18,7 +24,14 @@ public class CameraController : MonoBehaviour
     [SerializeField] private float _smoothTimeY;
     [SerializeField] private float _smoothTimeX;
     private Vector2 velocity;
+//    private float _shakeAmt;
+//    private bool _screenIsShaking = false;
 
+    protected void Awake()
+    {
+        instance = this;
+    }
+    
     protected void Start()
     {
         Sprite sprite = _cameraBounds.transform.GetComponent<SpriteRenderer>().sprite;
@@ -40,13 +53,70 @@ public class CameraController : MonoBehaviour
         }
     }
 
+//    private void Update()
+//    {
+//        if(_shakeAmt>0) 
+//        {
+//            float quakeAmt = Random.value*_shakeAmt*2 - _shakeAmt;
+//            Vector3 pp = transform.position;
+//            pp.x += quakeAmt;
+//            pp.y += quakeAmt;
+//            transform.position = pp;
+//            _screenIsShaking = true;
+//            _shakeAmt -= Mathf.Lerp(_shakeAmt, 0, _screenShakeDuration);
+//        }
+//        else
+//        {
+//            _screenIsShaking = false;
+//        }
+//    }
+
     protected void LateUpdate()
     {
-        Vector3 v3 = transform.position;
-        v3.x = Mathf.Clamp(v3.x, _left, _right);
-        v3.y = Mathf.Clamp(v3.y, _bottom, _top);
-        transform.position = v3;
+        Vector3 pos = transform.position;
+        
+//        if (_screenIsShaking)
+//        {
+            pos.x = Mathf.Clamp(pos.x, _left, _right);
+            pos.y = Mathf.Clamp(pos.y, _bottom, _top);
+            transform.position = pos;
+//        }
+//        else
+//        {
+//            if (Math.Abs(pos.x - (_left + _offsetBounds.x)) < 0.3f)
+//            {
+//                pos.x = Mathf.Lerp(pos.x, _left+_offsetBounds.x, _smoothTimeX);
+//                Debug.Log("Left Lerping"); 
+//            }
+//            else if (pos.x > _right + _offsetBounds.y)
+//            {
+//                pos.x = Mathf.Lerp(pos.x, _right+_offsetBounds.y, _smoothTimeX);
+//                Debug.Log("Right Lerping");
+//            }
+//
+//            if (Math.Abs(pos.y - (_bottom + _offsetBounds.z)) < 0.3f)
+//            {
+//                pos.y = Mathf.Lerp(pos.y, _bottom+_offsetBounds.z, _smoothTimeY);
+//                Debug.Log("Bottom Lerping");
+//            }
+//            else if (pos.y > _top + _offsetBounds.w)
+//            {
+//                pos.y = Mathf.Lerp(pos.y, _top+_offsetBounds.w, _smoothTimeY);
+//                Debug.Log("Top Lerping");
+//            }
+//            
+//            transform.position = pos;
+//        }
     }
+    
+//    public void ScreenShake(float amount)
+//    {
+//        _shakeAmt = amount;
+//    }
+//    public void StopScreenShake()
+//    {
+//        _shakeAmt = 0;
+//    }
 
     protected void CalculateSize(Sprite sprite, float pixelPerUnits)
     {

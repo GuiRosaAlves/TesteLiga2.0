@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CollectableItem : MonoBehaviour
+public class CollectableBomb : MonoBehaviour
 {
     [SerializeField] private SFXDictionary _sfx;
     [SerializeField] private Animator _animator;
@@ -13,14 +13,15 @@ public class CollectableItem : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D coll)
     {
-        PlayerController player = coll.GetComponent<PlayerController>();
+        Character player = coll.GetComponent<Character>();
         if (player)
         {
+            Debug.Log("asdasf");
             if (player.PickupBomb(BombsQtt))
             {
-                if (AudioManager.instance)
-                    AudioManager.instance.Play(_sfx.Get("Collected").audio);
-                _rigidBody.Sleep();
+                if (_App.SoundManager)
+                    _App.SoundManager.Play(_sfx.Get("Collected").audio);
+//                _rigidBody.Sleep();
                 _animator.SetTrigger("Destroy");
                 Destroy(gameObject, .3f);
             }

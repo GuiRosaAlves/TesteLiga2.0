@@ -9,23 +9,19 @@
       <e p="Assets\0_General" t="Include">
         <e p="Scripts" t="Include">
           <e p="_App.cs" t="Include" />
+          <e p="_RankingManager.cs" t="Include" />
           <e p="_SceneSwapManager.cs" t="Include" />
           <e p="_SoundManager.cs" t="Include" />
-          <e p="_UIManager.cs" t="Include" />
-          <e p="AudioManager.cs" t="Include" />
           <e p="EnemyManager.cs" t="Include" />
-          <e p="HighScoreManager3.cs" t="Include" />
-          <e p="HUDManager.cs" t="Include" />
           <e p="JsonDataController.cs" t="Include" />
-          <e p="RankingManager.cs" t="Include" />
         </e>
       </e>
       <e p="Assets\1_Main Menu" t="Include">
         <e p="Scripts" t="Include">
           <e p="Configs.cs" t="Include" />
+          <e p="GameOver.cs" t="Include" />
           <e p="MainMenu.cs" t="Include" />
           <e p="MenuController.cs" t="Include" />
-          <e p="MenuController3.cs" t="Include" />
           <e p="MenuPanel.cs" t="Include" />
           <e p="Ranking.cs" t="Include" />
         </e>
@@ -34,11 +30,11 @@
         <e p="Scripts" t="Include">
           <e p="Bomb.cs" t="Include" />
           <e p="CameraController.cs" t="Include" />
-          <e p="CollectableItem.cs" t="Include" />
+          <e p="Character.cs" t="Include" />
+          <e p="CollectableBomb.cs" t="Include" />
           <e p="Enemy.cs" t="Include" />
           <e p="Gun.cs" t="Include" />
-          <e p="Move.cs" t="Include" />
-          <e p="PlayerController.cs" t="Include" />
+          <e p="HUDController.cs" t="Include" />
           <e p="Projectile.cs" t="Include" />
         </e>
       </e>
@@ -304,6 +300,7 @@
           </e>
         </e>
         <e p="JsonHelper.cs" t="Include" />
+        <e p="SoundManagerHelper.cs" t="Include" />
       </e>
       <e p="Library" t="ExcludeRecursive" />
       <e p="obj" t="ExcludeRecursive" />

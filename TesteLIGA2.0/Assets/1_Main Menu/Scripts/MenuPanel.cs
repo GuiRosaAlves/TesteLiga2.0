@@ -8,12 +8,13 @@ public class MenuPanel : MonoBehaviour
     [SerializeField] private Animator[] _btnAnims;
 //    private MenuController _controller;
     
-    public Animator _anim { get; private set; }
+    public Animator Anim { get; private set; }
 
     private void Awake()
     {
 //        _controller = FindObjectOfType<MenuController>();
-        _anim = GetComponent<Animator>();
+        Anim = GetComponent<Animator>();
+        Debug.Log("Animator: "+Anim);
     }
 
     public void ResetAnimState() //Pequeno Arranjo Técnico, #UnityBugs

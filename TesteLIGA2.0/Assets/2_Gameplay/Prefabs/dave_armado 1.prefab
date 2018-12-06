@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4007200840092418}
   - component: {fileID: 114716905179807332}
   - component: {fileID: 137425860235978782}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: daveFatias_12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4015276685665682}
   - component: {fileID: 114447438429881966}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: B_cabeloE_dave_bandeja
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53,7 +53,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4574456316385376}
   - component: {fileID: 114529036049412652}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: B_bracoD2_dave_bandeja
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,7 +70,7 @@ GameObject:
   - component: {fileID: 4388178339625350}
   - component: {fileID: 114837788188239790}
   - component: {fileID: 137825559432820046}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: daveFatias_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4563471187709868}
   - component: {fileID: 114327560023461000}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: B_cabeca_dave_bandeja
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4404527020995342}
   - component: {fileID: 114746029712140236}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: B_costeleta_dave_bandeja
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4615929292563180}
   - component: {fileID: 114692927661894348}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: B_bracoE2_dave_bandeja
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -134,7 +134,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4173760683230548}
   - component: {fileID: 114122859995066432}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: B_cabeloD_dave_bandeja
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151,7 +151,7 @@ GameObject:
   - component: {fileID: 4564597827701242}
   - component: {fileID: 114289531130252572}
   - component: {fileID: 137242108460093380}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: daveFatias_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -168,7 +168,7 @@ GameObject:
   - component: {fileID: 4063718620082634}
   - component: {fileID: 114604736548294664}
   - component: {fileID: 137692261776243258}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: daveFatias_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -185,7 +185,7 @@ GameObject:
   - component: {fileID: 4605943745435936}
   - component: {fileID: 114258502543314000}
   - component: {fileID: 137945527600453954}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: daveFatias_13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -201,7 +201,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4639432996752796}
   - component: {fileID: 114913378765959676}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: B_peD2_dave_bandeja
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -217,7 +217,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4483005126212144}
   - component: {fileID: 114275793450467154}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: B_bracoE1_dave_bandeja
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -233,7 +233,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4978422434740318}
   - component: {fileID: 212936035522036322}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: efeito_tiro3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -250,7 +250,7 @@ GameObject:
   - component: {fileID: 4852532408687378}
   - component: {fileID: 114077790598432364}
   - component: {fileID: 137591785444149076}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: daveFatias_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -266,7 +266,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4604430842028586}
   - component: {fileID: 114828739929927106}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: B_pernaE2_dave_bandeja
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -283,7 +283,7 @@ GameObject:
   - component: {fileID: 4681625689764520}
   - component: {fileID: 114723111563918178}
   - component: {fileID: 137363723506100882}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: daveFatias_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -300,7 +300,7 @@ GameObject:
   - component: {fileID: 4273323783221938}
   - component: {fileID: 114983778728609856}
   - component: {fileID: 137602056590144290}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: daveFatias_10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -316,7 +316,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4275301671261308}
   - component: {fileID: 212873062428572378}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: efeito_tiro2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -332,7 +332,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4926976055428426}
   - component: {fileID: 95290276251430870}
-  m_Layer: 0
+  - component: {fileID: 114421263376578896}
+  - component: {fileID: 50967437419508662}
+  - component: {fileID: 70852713150362184}
+  m_Layer: 10
   m_Name: dave_armado 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -349,7 +352,7 @@ GameObject:
   - component: {fileID: 4880696378518532}
   - component: {fileID: 114962364497111822}
   - component: {fileID: 137895318479776186}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: daveFatias_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -365,7 +368,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4731440699657068}
   - component: {fileID: 114112967547677734}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: B_orelha_dave_bandeja
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -381,7 +384,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4393633079256834}
   - component: {fileID: 114762695161569946}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: B_pernaD1_dave_bandeja
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -398,7 +401,7 @@ GameObject:
   - component: {fileID: 4594432947933362}
   - component: {fileID: 114341193196491026}
   - component: {fileID: 137531275965199544}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: daveFatias_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -414,7 +417,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4492029984721886}
   - component: {fileID: 114551790842870896}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: B_corpo_dave_bandeja
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -430,7 +433,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4060394341889286}
   - component: {fileID: 114636917858572970}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: B_peE_dave_bandeja
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -446,7 +449,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4998122832006434}
   - component: {fileID: 114766822017548588}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: B_pernaE1_dave_bandeja
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -462,7 +465,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4182024502673546}
   - component: {fileID: 114664561384630186}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: B_bracoD1_dave_bandeja
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -478,7 +481,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4492489066890768}
   - component: {fileID: 114104822903055034}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: B_peD_dave_bandeja
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -494,7 +497,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4227963507073132}
   - component: {fileID: 212400884687864524}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: arma_brilho
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -511,7 +514,7 @@ GameObject:
   - component: {fileID: 4616243070809186}
   - component: {fileID: 114042485407817748}
   - component: {fileID: 137557246198861718}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: daveFatias_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -527,7 +530,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4553227650784640}
   - component: {fileID: 114399378279408932}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: B_pernaD2_dave_bandeja
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -544,7 +547,7 @@ GameObject:
   - component: {fileID: 4869298220590976}
   - component: {fileID: 114033263763519534}
   - component: {fileID: 137047303220801920}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: daveFatias_9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -560,7 +563,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4427427849523238}
   - component: {fileID: 114473028295985354}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: B_peE2_dave_bandeja
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -576,7 +579,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4188268365622036}
   - component: {fileID: 212125449829246054}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: efeito_tiro1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -592,7 +595,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4892676226595888}
   - component: {fileID: 212958578167542404}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: arma_dave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1051,8 +1054,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1571546678742688}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.8200622, y: -3.84, z: 271}
-  m_LocalScale: {x: 0.70000005, y: 0.70000005, z: 0.70000005}
+  m_LocalPosition: {x: -3.339, y: -3.165, z: 0}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.5}
   m_Children:
   - {fileID: 4616243070809186}
   - {fileID: 4852532408687378}
@@ -1102,6 +1105,41 @@ Transform:
   m_Father: {fileID: 4926976055428426}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -63.387005}
+--- !u!50 &50967437419508662
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1571546678742688}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!70 &70852713150362184
+CapsuleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1571546678742688}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 1.06, y: 1.97}
+  m_Direction: 0
 --- !u!95 &95290276251430870
 Animator:
   serializedVersion: 3
@@ -1338,6 +1376,44 @@ MonoBehaviour:
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 0}
   m_AttachedIK: {fileID: 0}
+--- !u!114 &114421263376578896
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1571546678742688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a003f80344b6e0342a75e0ef2a99a874, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _firePoint: {fileID: 4188268365622036}
+  _sfx:
+    library: []
+  _maxHP: 3
+  _maxBombUses: 3
+  _invencibilityTime: 2
+  _moveSpeed: 2.5
+  _jumpForce: 260
+  _midJumpFallSpeed: 5
+  _fallSpeed: 3
+  _characterSize: {x: 0, y: 0.75}
+  _groundCheckSize: {x: 0.19, y: 0.06}
+  _groundMask:
+    serializedVersion: 2
+    m_Bits: 512
+  _equippedGun:
+    _gunshotFX: {fileID: 8300000, guid: 03ada7f5039825d4d8c3353d4768bd50, type: 3}
+    _bulletPrefab: {fileID: 114647763555588328, guid: 4599adef83a94b9448d99fb3bfee4def,
+      type: 2}
+    _fireRate: 2
+    _shakeAmt: 2
+  _bombPrefab: {fileID: 114352816458000952, guid: 71e2f8247ebebd54fb90a891a578fbb7,
+    type: 2}
+  _canMove: 1
+  _canJump: 1
+  _canPlaceBomb: 1
+  _canShoot: 1
 --- !u!114 &114447438429881966
 MonoBehaviour:
   m_ObjectHideFlags: 1

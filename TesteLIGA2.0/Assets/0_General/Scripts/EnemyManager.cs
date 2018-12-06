@@ -11,15 +11,14 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private float _maxEnemiesAlive;
     [SerializeField] private List<Transform> _spawnPoints;
     [SerializeField] private Enemy _enemyPrefab;
-    private List<Enemy> _spawnedEnemies;
-    public int EnemiesCount { get { return _spawnedEnemies.Count; } }
+    public List<Enemy> SpawnedEnemies { get; private set; }
 
     public event Action<int> OnEnemyDeath;
 
     protected void Awake()
     {
         instance = this;
-        _spawnedEnemies = new List<Enemy>();
+        SpawnedEnemies = new List<Enemy>();
     }
 
     protected void Start()
@@ -33,12 +32,12 @@ public class EnemyManager : MonoBehaviour
     protected void SpawnEnemy()
     {
         Vector3 spawnPos = _spawnPoints[UnityEngine.Random.Range(0, _spawnPoints.Count)].position;
-        _spawnedEnemies.Add(Instantiate(_enemyPrefab, spawnPos, Quaternion.identity, transform));
+        SpawnedEnemies.Add(Instantiate(_enemyPrefab, spawnPos, Quaternion.identity, transform));
     }
 
     public void EnemyKilled(Enemy enemy)
     {
-        _spawnedEnemies.Remove(enemy);
+        SpawnedEnemies.Remove(enemy);
         Invoke("SpawnEnemy", UnityEngine.Random.Range(_minSpawnTime, _maxSpawnTime));
         if (OnEnemyDeath != null)
             OnEnemyDeath(enemy.ScorePoints);

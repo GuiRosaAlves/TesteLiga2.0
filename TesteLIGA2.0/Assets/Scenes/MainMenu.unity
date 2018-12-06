@@ -129,7 +129,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &17001333
 RectTransform:
   m_ObjectHideFlags: 0
@@ -203,7 +203,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &56355611
 RectTransform:
   m_ObjectHideFlags: 0
@@ -415,6 +415,17 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 8300000, guid: 89512137fc1923a4287eb01b1780a60d,
             type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 313444269}
+        m_MethodName: PlayGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -710,7 +721,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &182718526
 RectTransform:
   m_ObjectHideFlags: 0
@@ -852,7 +863,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &285091779
 RectTransform:
   m_ObjectHideFlags: 0
@@ -923,7 +934,7 @@ GameObject:
   - component: {fileID: 287150890}
   - component: {fileID: 287150889}
   m_Layer: 5
-  m_Name: Button (3)
+  m_Name: playAgain_btn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1013,6 +1024,17 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 8300000, guid: 89512137fc1923a4287eb01b1780a60d,
             type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 430078297}
+        m_MethodName: PlayAgain
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1225,7 +1247,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &313444265
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1400,7 +1422,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &340126689
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1673,7 +1695,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 1.
+  m_Text: 3.
 --- !u!222 &382807238
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1911,6 +1933,7 @@ GameObject:
   m_Component:
   - component: {fileID: 430078293}
   - component: {fileID: 430078296}
+  - component: {fileID: 430078297}
   - component: {fileID: 430078295}
   - component: {fileID: 430078294}
   m_Layer: 5
@@ -1996,6 +2019,22 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 430078292}
+--- !u!114 &430078297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 430078292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c02f3790b81913b42b459f56b3c0c1fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _btnAnims:
+  - {fileID: 287150889}
+  - {fileID: 2010055329}
+  - {fileID: 872256316}
+  _scoreTxt: {fileID: 1848203430}
 --- !u!1 &441401570
 GameObject:
   m_ObjectHideFlags: 0
@@ -2227,7 +2266,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &463744657
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2301,7 +2340,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &485046347
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2585,7 +2624,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &537981547
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2659,7 +2698,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &549076672
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2937,7 +2976,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &620747450
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3062,7 +3101,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 1.
+  m_Text: 5.
 --- !u!222 &659086047
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3647,7 +3686,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 1.
+  m_Text: 6.
 --- !u!222 &870509232
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3667,7 +3706,7 @@ GameObject:
   - component: {fileID: 872256317}
   - component: {fileID: 872256316}
   m_Layer: 5
-  m_Name: Button (5)
+  m_Name: back_btn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3757,6 +3796,17 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 8300000, guid: 89512137fc1923a4287eb01b1780a60d,
             type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 995298169}
+        m_MethodName: ChangeMenu
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 313444269}
+          m_ObjectArgumentAssemblyTypeName: MenuPanel, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -4078,6 +4128,7 @@ GameObject:
   m_Component:
   - component: {fileID: 995298170}
   - component: {fileID: 995298169}
+  - component: {fileID: 995298172}
   - component: {fileID: 995298171}
   m_Layer: 0
   m_Name: _SceneData
@@ -4097,7 +4148,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0c045303b0926c439c314642fe1dff2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currPanel: {fileID: 313444269}
+  _panels:
+  - {fileID: 313444269}
+  - {fileID: 1997423613}
+  - {fileID: 1157356179}
+  - {fileID: 430078297}
 --- !u!4 &995298170
 Transform:
   m_ObjectHideFlags: 0
@@ -4191,6 +4246,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &995298172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 995298168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd2f93056d2e8f049ba1afe2cfaf10e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1002909715
 GameObject:
   m_ObjectHideFlags: 0
@@ -4275,7 +4341,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1004612646
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4604,7 +4670,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 1.
+  m_Text: 10.
 --- !u!222 &1020875309
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5201,7 +5267,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1130860887
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5366,6 +5432,7 @@ MonoBehaviour:
   - {fileID: 2083749030}
   - {fileID: 1108272851}
   _soundEnabledTxt: {fileID: 1228809022}
+  _bgAs: {fileID: 995298171}
 --- !u!1 &1228809020
 GameObject:
   m_ObjectHideFlags: 0
@@ -5507,7 +5574,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 1.
+  m_Text: 7.
 --- !u!222 &1234915159
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5530,7 +5597,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1282426087
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5604,7 +5671,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1285627389
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5803,7 +5870,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 1.
+  m_Text: 2.
 --- !u!222 &1324266083
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5826,7 +5893,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1371940939
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6394,7 +6461,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1516032826
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6666,7 +6733,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1596520160
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7449,7 +7516,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1780130974
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7762,7 +7829,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1808132785
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7887,7 +7954,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 1.
+  m_Text: 9.
 --- !u!222 &1830451486
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8035,7 +8102,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 1.
+  m_Text: 4.
 --- !u!222 &1895927047
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8177,7 +8244,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 1.
+  m_Text: 8.
 --- !u!222 &1922836754
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8268,7 +8335,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1989813079
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8460,6 +8527,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _btnAnims:
   - {fileID: 675805262}
+  _rankItems:
+  - _name: {fileID: 17001334}
+    _score: {fileID: 1371940940}
+  - _name: {fileID: 182718527}
+    _score: {fileID: 1808132786}
+  - _name: {fileID: 1285627390}
+    _score: {fileID: 285091780}
+  - _name: {fileID: 620747451}
+    _score: {fileID: 56355612}
+  - _name: {fileID: 485046348}
+    _score: {fileID: 537981548}
+  - _name: {fileID: 340126690}
+    _score: {fileID: 1516032827}
+  - _name: {fileID: 1989813080}
+    _score: {fileID: 1282426088}
+  - _name: {fileID: 1780130975}
+    _score: {fileID: 463744658}
+  - _name: {fileID: 1596520161}
+    _score: {fileID: 549076673}
+  - _name: {fileID: 1004612647}
+    _score: {fileID: 1130860888}
 --- !u!1 &2010055327
 GameObject:
   m_ObjectHideFlags: 0
@@ -8473,7 +8561,7 @@ GameObject:
   - component: {fileID: 2010055330}
   - component: {fileID: 2010055329}
   m_Layer: 5
-  m_Name: Button (4)
+  m_Name: ranking_btn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8563,6 +8651,17 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 8300000, guid: 89512137fc1923a4287eb01b1780a60d,
             type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 995298169}
+        m_MethodName: ChangeMenu
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1997423613}
+          m_ObjectArgumentAssemblyTypeName: MenuPanel, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

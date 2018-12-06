@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class _App : MonoBehaviour
@@ -7,6 +6,9 @@ public class _App : MonoBehaviour
     public static _App Instance { get; private set; }
     public static _SceneSwapManager SceneSwapManager { get; private set; }
     public static _SoundManager SoundManager { get; private set; }
+    public static _RankingManager RankingManager { get; private set; }
+    
+    public MenuItems nextMenuItem { get; set; }
 
 //#if UNITY_EDITOR
 //    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
@@ -27,6 +29,7 @@ public class _App : MonoBehaviour
         
         SceneSwapManager = GetComponent<_SceneSwapManager>();
         SoundManager = GetComponent<_SoundManager>();
+        RankingManager = GetComponent<_RankingManager>();
     }
 
     public IEnumerator Sleep(int seconds)

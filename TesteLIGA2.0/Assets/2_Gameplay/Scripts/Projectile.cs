@@ -13,10 +13,12 @@ public class Projectile : MonoBehaviour
     {
         Destroy(gameObject, _lifeTime);
     }
-    protected void FixedUpdate ()
+
+    protected void FixedUpdate()
     {
         transform.Translate(Vector3.right * _speed * Time.deltaTime);
     }
+
     protected void OnTriggerEnter2D(Collider2D coll)
     {
         Enemy enemy = coll.GetComponent<Enemy>();
@@ -29,10 +31,11 @@ public class Projectile : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        if (coll.tag == "Ground")
+
+        if (coll.gameObject.layer == LayerMask.GetMask("Ground"));
         {
-            if (AudioManager.instance)
-                AudioManager.instance.Play(_sfx.Get("Impact").audio);
+            if (_App.SoundManager)
+                _App.SoundManager.Play(_sfx.Get("Impact").audio);
         }
     }
 }
