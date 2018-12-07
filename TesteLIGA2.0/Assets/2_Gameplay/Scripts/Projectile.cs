@@ -19,20 +19,20 @@ public class Projectile : MonoBehaviour
         transform.Translate(Vector3.right * _speed * Time.deltaTime);
     }
 
-    protected void OnTriggerEnter2D(Collider2D coll)
+    protected void OnCollisionEnter2D(Collision2D coll)
     {
-        Enemy2 enemy = coll.GetComponent<Enemy2>();
+        Enemy2 enemy = coll.transform.GetComponent<Enemy2>();
         if (enemy)
         {
             enemy.TakeDamage(_damage, transform.right, enemy.KnockBackForce);
         }
-
-        Destroy(gameObject);
 
         if (coll.gameObject.layer == LayerMask.GetMask("Ground"))
         {
             if (_App.SoundManager)
                 _App.SoundManager.Play(_sfx.Get("Impact").audio);
         }
+        
+        Destroy(gameObject);
     }
 }

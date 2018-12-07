@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class HUDController : MonoBehaviour
@@ -14,6 +15,8 @@ public class HUDController : MonoBehaviour
     [SerializeField] private Text _scoreUI;
     [Header("GameOver")] 
     [SerializeField] private GameObject _gameOverPanel;
+    [SerializeField] private EventSystem _evtSys;
+    [SerializeField] private InputField _initialsInput;
     
     protected void Awake()
     {
@@ -26,8 +29,6 @@ public class HUDController : MonoBehaviour
 
     protected void Start()
     {
-//        EnemyManager.instance.OnEnemyDeath += _player.ScorePoint; //TODO: Change the OnEnemyDeath event to be in the Enemy script not the EnemyManager
-
         UpdateHealth();
         UpdateBombs();
         UpdateScore();
@@ -41,6 +42,7 @@ public class HUDController : MonoBehaviour
             if (_App.RankingManager.CheckHighScore(_App.RankingManager.StatBuffer))
             {
                 _gameOverPanel.SetActive(true);
+                _evtSys.SetSelectedGameObject(_initialsInput.gameObject);
             }
             else
             {

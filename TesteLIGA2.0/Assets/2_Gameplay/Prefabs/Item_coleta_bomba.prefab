@@ -22,8 +22,8 @@ GameObject:
   - component: {fileID: 95074430904653044}
   - component: {fileID: 114868817295766960}
   - component: {fileID: 50626746276812098}
-  - component: {fileID: 58533892628074832}
-  m_Layer: 13
+  - component: {fileID: 58491598760554304}
+  m_Layer: 0
   m_Name: Item_coleta_bomba
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4916526875712130}
   - component: {fileID: 212358936192352830}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: img_bolinha_item5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4122401045328582}
   - component: {fileID: 212201882486606126}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: img_bolinha_item4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4789587346956380}
   - component: {fileID: 212828329377078344}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: img_bolinha_item1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4404835464316606}
   - component: {fileID: 212077953638832852}
-  - component: {fileID: 58137342239481952}
+  - component: {fileID: 58923323255726468}
   m_Layer: 13
   m_Name: img_item
   m_TagString: Untagged
@@ -104,7 +104,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4003157273849120}
   - component: {fileID: 212106333271708540}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: img_bolinha_item2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,7 +120,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4063727742263464}
   - component: {fileID: 212600134968977746}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: img_bolinha_item3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -186,7 +186,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1039341477537600}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.33, y: -3.9, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 4404835464316606}
@@ -243,23 +243,8 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!58 &58137342239481952
-CircleCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1662744281268638}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.65
---- !u!58 &58533892628074832
+  m_Constraints: 4
+--- !u!58 &58491598760554304
 CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -268,12 +253,27 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.62
+--- !u!58 &58923323255726468
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1662744281268638}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!95 &95074430904653044
 Animator:
   serializedVersion: 3

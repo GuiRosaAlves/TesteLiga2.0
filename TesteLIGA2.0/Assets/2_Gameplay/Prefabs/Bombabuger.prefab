@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4695080791936488}
   - component: {fileID: 212138908844569396}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: bomba
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4853498210915450}
   - component: {fileID: 212618419490902778}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: explode2_0001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 114352816458000952}
   - component: {fileID: 58462581116264258}
   - component: {fileID: 50154296513684112}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Bombabuger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -172,9 +172,9 @@ MonoBehaviour:
     library:
     - tag: explode
       audio: {fileID: 8300000, guid: 49c08c2e602559a4695729f7a0af690a, type: 3}
-  _damage: 0
-  _explosionForce: 25
-  _explosionRadius: 1
+  _damage: 2
+  _explosionForce: 4.2
+  _explosionRadius: 0.75
   _explosionDelay: 3
   _hitMask:
   - serializedVersion: 2

@@ -14,8 +14,7 @@ public class Enemy2 : MonoBehaviour
     [Header("Attributes")]
     [SerializeField] private SFXDictionary _sfx;
     [SerializeField] private int _maxHealth;
-    private int _currHealth;
-    public int CurrHealth { get { return _currHealth; } private set { _currHealth = Mathf.Clamp(value, 0, _maxHealth); } }
+    public int CurrHealth { get; private set; }
     [SerializeField] private float _moveSpeed;
     [SerializeField] private int _damage;
     [SerializeField] private int _scorePoints;
@@ -35,6 +34,7 @@ public class Enemy2 : MonoBehaviour
     [SerializeField] private bool _drawWallCheck;
     [SerializeField] private bool _drawGroundCheck;
     [SerializeField] private bool _drawPlayerCheck;
+    [SerializeField] private bool _canMove = true;
 
     private Transform _targetPosition;
     private bool _moveRequest = true;
@@ -47,7 +47,6 @@ public class Enemy2 : MonoBehaviour
     protected void Awake()
     {
         CurrHealth = _maxHealth;
-
         RB = GetComponent<Rigidbody2D>();
         Anim = GetComponent<Animator>();
         
@@ -58,7 +57,7 @@ public class Enemy2 : MonoBehaviour
 
     protected void FixedUpdate()
     {
-        if (_moveRequest)
+        if (_canMove && _moveRequest)
         {
             transform.Translate(_moveVector * _moveSpeed * Time.deltaTime);
         }
@@ -68,8 +67,8 @@ public class Enemy2 : MonoBehaviour
     {
         if (_targetPosition == null)
         {
-            RaycastHit2D hitResult = Physics2D.Raycast(transform.position + (_moveVector * _playerCheckOffset), _moveVector, _playerCheckSize);
-            if (hitResult && hitResult.transform.tag == "Player")
+            RaycastHit2D hitResult = Physics2D.Raycast(transform.position + (_moveVector * _playerCheckOffset), _moveVector, _playerCheckSize, LayerMask.GetMask("Player"));
+            if (hitResult)
             {
                 _targetPosition = hitResult.transform;
                 if (_App.SoundManager)
@@ -139,8 +138,9 @@ public class Enemy2 : MonoBehaviour
     
     public void TakeDamage(int damage, Vector2 knockBackDir, float knockBackForce)
     {
-        _currHealth -= damage;
-        if (_currHealth <= 0)
+        CurrHealth -= damage;
+        
+        if (CurrHealth <= 0)
         {
             Die();
         }
@@ -160,6 +160,8 @@ public class Enemy2 : MonoBehaviour
     }
     protected void Die()
     {
+        _canMove = false;
+        
         if (_App.SoundManager)
             _App.SoundManager.Play(_sfx.Get("Death").audio);
         RB.constraints = RigidbodyConstraints2D.FreezeAll;

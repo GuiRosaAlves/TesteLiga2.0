@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 [System.Serializable]
 public class PlayerStat
@@ -26,6 +27,7 @@ public class _RankingManager : MonoBehaviour
     {
         _jsonController = new JsonDataController<PlayerStat>("score_board_data");
         ScoreBoard = SortScoreBoard(_jsonController.LoadDataList(), SortingType.Descending);
+        
         if (ScoreBoard == null)
             ScoreBoard = new List<PlayerStat>();
     }
@@ -59,10 +61,8 @@ public class _RankingManager : MonoBehaviour
     public void AddScore(PlayerStat newStat)
     {
         ScoreBoard.Add(newStat);
+        ScoreBoard = SortScoreBoard(ScoreBoard, SortingType.Descending);
         _jsonController.SaveData(ScoreBoard);
-//        _scoreBoard = SortScoreBoard(_scoreBoard, SortingType.Descending);
-//        if (_scoreBoard.Count >= 11)
-//            _scoreBoard.RemoveAt(10);   //TODO: Maybe need to tweak this later
     }
 
     public void ResetScoreBoard()

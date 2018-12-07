@@ -23,9 +23,9 @@ public class CollectableBomb : MonoBehaviour
                     _App.SoundManager.Play(_sfx.Get("Collected").audio);
                 _animator.SetTrigger("Destroy");
                 Destroy(gameObject, .3f);
+                
+                _pickupTrigger = false;
             }
-
-            _pickupTrigger = false;
             _player = null;
         }
         else

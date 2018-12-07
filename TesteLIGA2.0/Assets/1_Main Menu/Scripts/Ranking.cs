@@ -23,12 +23,16 @@ public class Ranking : MenuPanel
         if (_App.RankingManager)
         {
             var scoreBoard = _App.RankingManager.ScoreBoard;
-            for (int i = 0; i < scoreBoard.Count; i++)
+            
+            for (int i = 0; i < _rankItems.Length; i++)
             {
-                _rankItems[i]._name.gameObject.SetActive(true);
-                _rankItems[i]._name.text = scoreBoard[i].Name;
-                _rankItems[i]._score.gameObject.SetActive(true);
-                _rankItems[i]._score.text = scoreBoard[i].Score+"";
+                if (i < scoreBoard.Count)
+                {
+                    _rankItems[i]._name.gameObject.SetActive(true);
+                    _rankItems[i]._name.text = scoreBoard[i].Name;
+                    _rankItems[i]._score.gameObject.SetActive(true);
+                    _rankItems[i]._score.text = scoreBoard[i].Score+"";
+                }
             }
         }
     }

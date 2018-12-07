@@ -146,7 +146,7 @@ public class Character : MonoBehaviour
 	}
 	
 	private void PlantBomb()
-	{
+	{	
 		if (_bombPrefab && Anim)
 		{
 			if (CurrBombUses > 0)
