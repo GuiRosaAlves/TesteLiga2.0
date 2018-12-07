@@ -5,7 +5,7 @@ public class GameOver : MenuPanel
 {
     [SerializeField] private Text _scoreTxt;
 
-    private void Awake()
+    private void Start()
     {
         if (_App.RankingManager)
             _scoreTxt.text = _App.RankingManager.StatBuffer.Score+"";

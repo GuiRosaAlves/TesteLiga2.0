@@ -4018,6 +4018,27 @@ AnimationClip:
   m_GenerateMotionCurves: 0
   m_Events:
   - time: 0
+    functionName: CanShootState
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0
+    functionName: CanJumpState
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0
+    functionName: CanPlaceBombState
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0
     functionName: CanMoveState
     data: 
     objectReferenceParameter: {fileID: 0}
@@ -4025,7 +4046,28 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 0.9166667
+    functionName: CanPlaceBombState
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 1
+    messageOptions: 0
+  - time: 0.9166667
+    functionName: CanShootState
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 1
+    messageOptions: 0
+  - time: 0.9166667
     functionName: CanMoveState
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 1
+    messageOptions: 0
+  - time: 0.9166667
+    functionName: CanJumpState
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

@@ -21,18 +21,15 @@ public class Projectile : MonoBehaviour
 
     protected void OnTriggerEnter2D(Collider2D coll)
     {
-        Enemy enemy = coll.GetComponent<Enemy>();
-        if (enemy && coll.isTrigger == false)
+        Enemy2 enemy = coll.GetComponent<Enemy2>();
+        if (enemy)
         {
             enemy.TakeDamage(_damage, transform.right, enemy.KnockBackForce);
-            Destroy(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
         }
 
-        if (coll.gameObject.layer == LayerMask.GetMask("Ground"));
+        Destroy(gameObject);
+
+        if (coll.gameObject.layer == LayerMask.GetMask("Ground"))
         {
             if (_App.SoundManager)
                 _App.SoundManager.Play(_sfx.Get("Impact").audio);

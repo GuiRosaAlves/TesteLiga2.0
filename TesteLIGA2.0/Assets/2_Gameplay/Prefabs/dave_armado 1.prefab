@@ -1389,12 +1389,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _firePoint: {fileID: 4188268365622036}
   _sfx:
-    library: []
+    library:
+    - tag: GameOver
+      audio: {fileID: 8300000, guid: f643503b0e41a834ba30a8177e7a6915, type: 3}
+    - tag: Hurt
+      audio: {fileID: 8300000, guid: df97462332329d9409118d5497a7a359, type: 3}
+    - tag: Jump
+      audio: {fileID: 8300000, guid: 2f7f9d1712ebd9d43afa8ec0a638b799, type: 3}
+    - tag: PlantBomb
+      audio: {fileID: 8300000, guid: 4e1f6d804b911e24a9061836fdc2e5bd, type: 3}
+    - tag: Walk
+      audio: {fileID: 8300000, guid: 0a2c93b0ea2a1c844a6e20606a3bb753, type: 3}
   _maxHP: 3
   _maxBombUses: 3
   _invencibilityTime: 2
   _moveSpeed: 2.5
-  _jumpForce: 260
+  _jumpForce: 275
   _midJumpFallSpeed: 5
   _fallSpeed: 3
   _characterSize: {x: 0, y: 0.75}

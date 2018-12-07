@@ -44,13 +44,13 @@ public class Bomb : MonoBehaviour
             Vector2 knockBackDir = objectsInRange[i].transform.position - transform.position;
 
             Character player = objectsInRange[i].GetComponent<Character>();
-            Enemy enemy = objectsInRange[i].GetComponent<Enemy>();
+            Enemy2 enemy = objectsInRange[i].GetComponent<Enemy2>();
 
             if (objectsInRange[i].GetComponent<Character>())
             {
                 player.TakeDamage(_damage, knockBackDir, _explosionForce);
             }
-            else if (objectsInRange[i].GetComponent<Enemy>())
+            else if (objectsInRange[i].GetComponent<Enemy2>())
             {
                 enemy.TakeDamage(_damage, knockBackDir, _explosionForce);
             }

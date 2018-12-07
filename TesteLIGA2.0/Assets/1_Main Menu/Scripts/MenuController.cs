@@ -12,10 +12,7 @@ public class MenuController : MonoBehaviour
 
     public void Awake()
     {
-        if (_App.Instance)
-            _currPanel = _panels[(int) _App.Instance.nextMenuItem];
-        else
-            _currPanel = _panels[(int) MenuItems.MainMenu];
+        _currPanel = _App.Instance ? _panels[(int) _App.Instance.nextMenuItem] : _panels[(int) MenuItems.MainMenu];
 
         if (!_currPanel.gameObject.activeSelf)
             _currPanel.gameObject.SetActive(true);

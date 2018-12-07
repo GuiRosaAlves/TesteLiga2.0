@@ -7,9 +7,9 @@ public class _App : MonoBehaviour
     public static _SceneSwapManager SceneSwapManager { get; private set; }
     public static _SoundManager SoundManager { get; private set; }
     public static _RankingManager RankingManager { get; private set; }
-    
-    public MenuItems nextMenuItem { get; set; }
 
+    [SerializeField] private float _sleepTime = 0.1f;
+    public MenuItems nextMenuItem { get; set; }
 //#if UNITY_EDITOR
 //    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
 //    public static void PreloadScene()
@@ -32,7 +32,12 @@ public class _App : MonoBehaviour
         RankingManager = GetComponent<_RankingManager>();
     }
 
-    public IEnumerator Sleep(int seconds)
+    public void Snooze()
+    {
+        StartCoroutine("Sleep", _sleepTime);
+    }
+    
+    private IEnumerator Sleep(float seconds)
     {
         Time.timeScale = 0.0001f;
         float pauseEndTime = Time.realtimeSinceStartup + seconds;

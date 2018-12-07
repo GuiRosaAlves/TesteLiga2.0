@@ -69,7 +69,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1682457932932304}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -3.1353545, y: 0.65939313, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_Children:
   - {fileID: 4695080791936488}
@@ -172,8 +172,8 @@ MonoBehaviour:
     library:
     - tag: explode
       audio: {fileID: 8300000, guid: 49c08c2e602559a4695729f7a0af690a, type: 3}
-  _damage: 2
-  _explosionForce: 200
+  _damage: 0
+  _explosionForce: 25
   _explosionRadius: 1
   _explosionDelay: 3
   _hitMask:

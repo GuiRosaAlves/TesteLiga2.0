@@ -1,71 +1,82 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public enum EnemyStates { Patrol, Follow, Count }
 public class Enemy : MonoBehaviour
 {
-    [Header("References")]
-    [SerializeField] private Animator _animator;
-    [SerializeField] private Rigidbody2D _rigidBody;
-    [Header("Attributes")]
+    public Rigidbody2D RB { get; private set; }
+    public Animator Anim { get; private set; }
+    
+    [SerializeField] private Collider2D _coll;
+    [SerializeField] private Collider2D _triggerColl;
+    [Header("Stats")]
     [SerializeField] private SFXDictionary _sfx;
-    [SerializeField] private int _maxHealth;
-    private int _currHealth;
-    public int CurrHealth { get { return _currHealth; } private set { _currHealth = Mathf.Clamp(value, 0, _maxHealth); } }
-    [SerializeField] private float _moveSpeed;
-    [SerializeField] private int _damage;
+    [SerializeField] private float _maxHP;
+    [SerializeField] private float  _knockBackForce;
     [SerializeField] private int _scorePoints;
-    public int ScorePoints { get { return _scorePoints; } }
-    [SerializeField] private float _knockBackForce;
-    public float KnockBackForce { get { return _knockBackForce; } }
-    [Header("Behaviour Variables")]
-    [SerializeField] private float _patrolDelay;
-    [SerializeField] private float _targetMaxDistance;
-    [Header("Raycast Variables")]
-    [SerializeField] private Vector3 _wallCheckSize;
-    [SerializeField] private Vector3 _groundCheckSize;
-    [SerializeField] private Vector3 _groundCheckOffset;
-    [SerializeField] private float _playerCheckSize;
-    [SerializeField] private float _playerCheckOffset;
-    [Header("Debug")]
-    [SerializeField] private bool _drawWallCheck;
-    [SerializeField] private bool _drawGroundCheck;
-    [SerializeField] private bool _drawPlayerCheck;
+    [SerializeField] private int _damage;
+    
+    public float CurrHP { get; private set; }
+    public float KnockBackForce { get; private set; }
+    public float ScorePoints { get; private set; }
 
-    private Transform _targetPosition;
-    private bool _moveRequest = true;
-    private Vector3 _moveVector = Vector3.right;
+    [Header("Movement")]
+    [SerializeField] private float _moveSpeed;
+    //TODO: Acceleration variable
+
+    [Header("Ground Check")]
+    [SerializeField] private Vector3 _wallCheckSize;
+    [SerializeField] private Vector2 _characterSize;
+    [SerializeField] private Vector2 _groundCheckSize;
+    [SerializeField] private LayerMask _groundMask;
+
+    [Header("Player Check")] 
+    [SerializeField] private float _patrolDelay;
+    [SerializeField] private float _rayDistance;
+    [SerializeField] private float _rayOffset;
+    [SerializeField] private float _targetMaxDistance;
+    
+    [Header("Triggers")] 
+    [SerializeField] private bool _canMove = true;
+    
+    public bool IsGrounded { get; private set; }
+    
+    public event Action<int> OnDeath;
+
+    public Character CurrTarget { get; private set; }
+    public Vector2 MoveVector { get; private set; }
+    
     private EnemyStates _currState = EnemyStates.Patrol;
     private delegate void StateMachine();
     private StateMachine[] _enemyStates;
-
-    protected void Awake()
+    
+    private void Awake()
     {
-        CurrHealth = _maxHealth;
-
+        RB = GetComponent<Rigidbody2D>();
+        Anim = GetComponent<Animator>();
+        CurrHP = _maxHP;
+        KnockBackForce = _knockBackForce;
+        ScorePoints = _scorePoints;
+        
         _enemyStates = new StateMachine[(int)EnemyStates.Count];
         _enemyStates[(int)EnemyStates.Patrol] = Patrol;
         _enemyStates[(int)EnemyStates.Follow] = Follow;
     }
 
-    protected void FixedUpdate()
+    private void FixedUpdate()
     {
-        if (_moveRequest)
-        {
-            transform.Translate(_moveVector * _moveSpeed * Time.deltaTime);
-        }
+        if (_canMove)
+            transform.Translate(MoveVector * _moveSpeed * Time.deltaTime);
     }
-
-    protected void Update()
+    
+    private void Update()
     {
-        if (_targetPosition == null)
+        if (CurrTarget == null)
         {
-            RaycastHit2D hitResult = Physics2D.Raycast(transform.position + (_moveVector * _playerCheckOffset), _moveVector, _playerCheckSize);
-            if (hitResult && hitResult.transform.tag == "Player")
+            var hit = Physics2D.Raycast(transform.position, transform.right, _rayDistance, LayerMask.GetMask("Player"));
+            if (hit)
             {
-                _targetPosition = hitResult.transform;
+                CurrTarget = hit.transform.GetComponent<Character>();
                 if (_App.SoundManager)
                     _App.SoundManager.Play(_sfx.Get("Alerted").audio);
                 _currState = EnemyStates.Follow;
@@ -73,159 +84,121 @@ public class Enemy : MonoBehaviour
             }
             else
             {
-                _targetPosition = null;
+                CurrTarget = null;
                 _currState = EnemyStates.Patrol;
             }
-        }
-        else if (Vector2.Distance(transform.position, _targetPosition.position) >= _targetMaxDistance)
+        }else if (Vector2.Distance(transform.position, CurrTarget.transform.position) >= _targetMaxDistance)
         {
-            _targetPosition = null;
-            _moveVector = (UnityEngine.Random.Range(0, 2) == 0) ? Vector3.right : Vector3.left;
+            CurrTarget = null;
+            MoveVector = (UnityEngine.Random.Range(0, 2) == 0) ? Vector3.right : Vector3.left;
             _currState = EnemyStates.Patrol;
         }
         
-
-        if (_animator)
-        {
-            _animator.SetBool("IsMoving", _moveRequest);
-        }
-        else
-        {
-            Debug.Log("There are null references in the editor!");
-        }
-
         if (_enemyStates[(int)_currState] != null)
-        {
             _enemyStates[(int)_currState]();
-        }
     }
 
+    private void LateUpdate()
+    {
+        Flip();
+        IsGrounded = GroundCheck();
+        Anim.SetFloat("NormalizedSpeed", Mathf.Abs(MoveVector.x));
+    }
+    private void Patrol()
+    {
+        if (_canMove)
+        {
+            RaycastHit2D hitResult = Physics2D.BoxCast(transform.position + (Vector3)(MoveVector * _wallCheckSize.x), _wallCheckSize, 0, transform.forward, _wallCheckSize.x, LayerMask.GetMask("Ground"));
+            if (hitResult || !IsGrounded)
+            {
+                StopMovement();
+                MoveVector += (MoveVector.x * Vector2.right * -1);
+                Invoke("AllowMovement", _patrolDelay);
+            }
+        }
+    }
+    
+    private void Follow()
+    {
+        MoveVector = CurrTarget.transform.position - transform.position;
+        MoveVector.Normalize();
+    }
+    
+    public void AllowMovement() { _canMove = true; }
+    public void StopMovement() { _canMove = false; }
+    private bool GroundCheck()
+    {
+        Vector2 boxCenter = (Vector2)transform.position + Vector2.down * (_characterSize.y + _groundCheckSize.y) * 0.5f;
+        return (Physics2D.OverlapBox(boxCenter, _groundCheckSize, 0f, _groundMask) != null);
+    }
+    private void Flip()
+    {
+        if (MoveVector.x != 0)
+            transform.localScale = (Vector3.right * Mathf.Sign(MoveVector.x) * Mathf.Abs(transform.localScale.x)) +  (Vector3.up * transform.localScale.y) + (Vector3.forward * transform.localScale.z);
+    }
+    
     protected void OnTriggerEnter2D(Collider2D coll)
     {
         Character player = coll.GetComponent<Character>();
         if (player)
         {
-            Vector2 knockBackDir = (_moveVector.x > 0) ? Vector2.left : Vector2.right;
+            var knockBackDir = transform.position - player.transform.position;
+            knockBackDir.Normalize();
+            //TODO: Fix the knockback direction
             player.TakeDamage(_damage, -knockBackDir, _knockBackForce);
-            if (_rigidBody)
+            if (RB)
             {
-                _rigidBody.velocity = Vector2.zero;
-                _rigidBody.AddForce(knockBackDir * _knockBackForce, ForceMode2D.Impulse);
-            }
-            else
-            {
-                Debug.Log("There are null references in the editor!");
+                RB.velocity = Vector2.zero;
+                RB.AddForce(knockBackDir * _knockBackForce, ForceMode2D.Impulse);
             }
         }
     }
-
+    
     protected void OnDrawGizmos()
     {
-        if (_drawWallCheck)
-        {
-            Gizmos.color = Color.green;
-            Gizmos.DrawWireCube(transform.position + (_moveVector * _wallCheckSize.x), _wallCheckSize);
-        }
-        if (_drawGroundCheck)
-        {
-            Gizmos.color = Color.cyan;
-            Gizmos.DrawWireCube(transform.position + (_moveVector * (_groundCheckSize.x + _groundCheckOffset.x)) + (Vector3.up * _groundCheckOffset.y), _groundCheckSize);
-        }
-        if (_drawPlayerCheck)
-        {
-            Gizmos.color = Color.blue;
-            Gizmos.DrawLine(transform.position + (_playerCheckOffset * _moveVector), transform.position + _moveVector * _playerCheckSize);
-        }
+        Vector2 boxCenter = (Vector2)transform.position + Vector2.down * (_characterSize.y + _groundCheckSize.y) * 0.5f;
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireCube(boxCenter, _groundCheckSize);
+        
+        Gizmos.color = Color.blue;
+        var pos = transform.position + (Vector3.right * _rayOffset);
+        Gizmos.DrawLine(pos, pos + transform.right * _rayDistance);
+        
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(transform.position + (Vector3)(MoveVector * _wallCheckSize.x), _wallCheckSize);
     }
-    public void TakeDamage(int damage)
-    {
-        CurrHealth -= damage;
 
-        if (CurrHealth <= 0)
-        {
-            if (_App.SoundManager)
-                _App.SoundManager.Play(_sfx.Get("Death").audio);
-            _animator.SetBool("IsDead", true);
-            _animator.SetTrigger("Die");
-        }
-        if (_App.SoundManager)
-            _App.SoundManager.Play(_sfx.Get("Hurt").audio);
-        StopMovement();
-
-        if (_animator)
-        {
-            _animator.SetTrigger("IsTakingDamage");
-        }
-        else
-        {
-            Debug.Log("There are null references in the editor!");
-        }
-    }
     public void TakeDamage(int damage, Vector2 knockBackDir, float knockBackForce)
     {
-        CurrHealth -= damage;
-        if (CurrHealth <= 0)
+        CurrHP -= damage;
+        if (CurrHP <= 0)
         {
-            if (_App.SoundManager)
-                _App.SoundManager.Play(_sfx.Get("Death").audio);
-            _animator.SetBool("IsDead", true);
-            _animator.SetTrigger("Die");
+            Die();
         }
         else
         {
-            _rigidBody.velocity = Vector2.zero;
-            _rigidBody.AddForce(knockBackDir * knockBackForce, ForceMode2D.Impulse);
+            RB.velocity = Vector2.zero;
+            RB.AddForce(knockBackDir * knockBackForce, ForceMode2D.Impulse);
         }
         if (_App.SoundManager)
             _App.SoundManager.Play(_sfx.Get("Hurt").audio);
 
-        StopMovement();
+        if (Anim)
+            Anim.SetTrigger("Hit");
+    }
 
-        if (_animator)
-        {
-            _animator.SetTrigger("IsTakingDamage");
-        }
-        else
-        {
-            Debug.Log("There are null references in the editor!");
-        }
-    }
-    protected void Die()
+    private void Die()
     {
-        if (EnemyManager.instance)
-            EnemyManager.instance.EnemyKilled(this);
-        Destroy(gameObject);
-    }
-    protected void Patrol()
-    {
-        if (_moveRequest)
-        {
-            RaycastHit2D hitResult = Physics2D.BoxCast(transform.position + (_moveVector * _wallCheckSize.x), _wallCheckSize, 0, transform.forward, _wallCheckSize.x, LayerMask.GetMask("Ground"));
-            RaycastHit2D groundCheck = Physics2D.BoxCast(transform.position + (_moveVector * (_groundCheckSize.x +_groundCheckOffset.x)) + (Vector3.up * _groundCheckOffset.y), _groundCheckSize, 0, transform.forward, _groundCheckSize.x, LayerMask.GetMask("Ground"));
-            if (hitResult || !groundCheck)
-            {
-                StopMovement();
-                _moveVector *= -1;
-                Invoke("AllowMovement", _patrolDelay);
-            }
-        }
-    }
-    protected void Follow()
-    {
-        _moveVector = _targetPosition.position - transform.position;
-        _moveVector.Normalize();
-    }
-    protected void AllowMovement()
-    {
-        _moveRequest = true;
-    }
-    protected void StopMovement()
-    {
-        _moveRequest = false;
-    }
-    protected void Flip()
-    {
-        if (_moveVector.x != 0)
-            transform.localScale = (Vector3.right * Mathf.Sign(_moveVector.x) * Mathf.Abs(transform.localScale.x)) + (Vector3.up * transform.localScale.y) + (Vector3.forward * transform.localScale.z);
+        if (_App.SoundManager)
+            _App.SoundManager.Play(_sfx.Get("Death").audio);
+        RB.constraints = RigidbodyConstraints2D.FreezeAll;
+        _coll.enabled = false;
+        _triggerColl.enabled = false;
+
+        if (OnDeath != null)
+            OnDeath(_scorePoints);
+        
+        Anim.SetTrigger("Death");
+        Destroy(gameObject, 1.5f);
     }
 }

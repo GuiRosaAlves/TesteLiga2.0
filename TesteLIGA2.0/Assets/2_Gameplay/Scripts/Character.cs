@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 public class Character : MonoBehaviour
@@ -20,7 +19,12 @@ public class Character : MonoBehaviour
 	
 	//Properties
 	public int Score { get; private set; }
-	public int CurrHP { get; private set; }
+	private int _currHP;
+	public int CurrHP
+	{
+		get { return _currHP; }
+		private set { _currHP = Mathf.Clamp(value, 0, _maxHP); } 
+	}
 	public int CurrBombUses { get; private set; }
 	public float CurrSpeed { get; private set; }
 	
@@ -58,7 +62,7 @@ public class Character : MonoBehaviour
 	public event Action OnPickupBombs;
 	public event Action OnScorePoint;
 	
-	private float _xAxis;
+	public float MoveDir { get; private set; }
 	
 	private void Awake()
 	{
@@ -88,7 +92,7 @@ public class Character : MonoBehaviour
 	void Update ()
 	{
 		IsGrounded = GroundCheck();
-		_xAxis = Input.GetAxis("Horizontal");
+		MoveDir = Input.GetAxis("Horizontal");
 
 		if (_jumpRequest)
 			Jump();
@@ -119,16 +123,16 @@ public class Character : MonoBehaviour
 
 	private void LateUpdate()
 	{
-		Anim.SetFloat("NormalizedRunSpeed", Mathf.Abs(_xAxis));
+		Anim.SetFloat("NormalizedRunSpeed", Mathf.Abs(MoveDir));
 		Anim.SetBool("Jumping", _jumpRequest);
-		Anim.SetBool("PlantingBomb", _placeBombRequest);
+		Anim.SetBool("PlantingBomb", (CurrBombUses > 0) && _placeBombRequest);
 		Anim.SetBool("Firing", _shootRequest);
 		Anim.SetBool("IsGrounded", IsGrounded);
 	}
 
 	private void UpdateMovement()
 	{
-		transform.position += Vector3.right * _xAxis * Time.deltaTime * _moveSpeed;
+		transform.position += Vector3.right * MoveDir * Time.deltaTime * _moveSpeed;
 	}
 	
 	private void Jump()
@@ -219,6 +223,8 @@ public class Character : MonoBehaviour
 		{
 			Debug.Log("There are null references in the editor!");
 		}
+		if (_App.Instance)
+			_App.Instance.Snooze();
 	}
 	
 	protected void StartInvencibility()
@@ -257,17 +263,17 @@ public class Character : MonoBehaviour
 		}
 	}
 	
-	public void ScorePoint(int points)
+	public void ScorePoint(Enemy2 enemy)
 	{
-		Score += points;
+		Score += enemy.ScorePoints;
 		if (OnScorePoint != null)
 			OnScorePoint();
 	}
 	
 	private void Flip()
 	{
-		if (_xAxis != 0)
-			transform.localScale = (Vector3.right * Mathf.Sign(_xAxis) * Mathf.Abs(transform.localScale.x)) +  (Vector3.up * transform.localScale.y) + (Vector3.forward * transform.localScale.z);
+		if (MoveDir != 0)
+			transform.localScale = (Vector3.right * Mathf.Sign(MoveDir) * Mathf.Abs(transform.localScale.x)) +  (Vector3.up * transform.localScale.y) + (Vector3.forward * transform.localScale.z);
 	}
 	private bool GroundCheck()
 	{
@@ -282,9 +288,8 @@ public class Character : MonoBehaviour
 		Gizmos.DrawWireCube(boxCenter, _groundCheckSize);
 	}
 
-	
-	public void CanMoveState(int state)
-	{
-		_canMove = (state > 0) ? true : false;
-	}
+	public void CanMoveState(int state) { _canMove = (state > 0) ? true : false; }
+	public void CanPlaceBombState(int state) { _canPlaceBomb = (state > 0) ? true : false; }
+	public void CanJumpState(int state) { _canJump = (state > 0) ? true : false; }
+	public void CanShootState(int state) { _canShoot = (state > 0) ? true : false; }
 }

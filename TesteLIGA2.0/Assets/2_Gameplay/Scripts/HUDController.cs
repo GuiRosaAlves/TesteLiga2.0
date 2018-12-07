@@ -54,6 +54,7 @@ public class HUDController : MonoBehaviour
     public void ChangeName(Text txt)
     {
         _App.RankingManager.StatBuffer.Name = txt.text;
+        _App.RankingManager.AddScore(_App.RankingManager.StatBuffer);
     }
     
     public void StartFadeIn()

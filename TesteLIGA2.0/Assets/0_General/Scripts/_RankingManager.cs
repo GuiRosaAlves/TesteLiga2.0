@@ -45,14 +45,10 @@ public class _RankingManager : MonoBehaviour
             if (i < ScoreBoard.Count)
             {
                 if (stat.Score > ScoreBoard[i].Score)
-                {
-                    ScoreBoard.Add(stat);
                     return true;
-                }
             }
             else
             {
-                ScoreBoard.Add(stat);
                 return true;
             }
         }

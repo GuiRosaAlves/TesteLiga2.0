@@ -20,7 +20,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4044456406279134}
   - component: {fileID: 95153651579540292}
+  - component: {fileID: 114067218247777880}
   - component: {fileID: 58722531127928502}
+  - component: {fileID: 58556839981518236}
   - component: {fileID: 50571387455922918}
   m_Layer: 11
   m_Name: Inimigo
@@ -68,7 +70,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1288388784936066}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.2422605, y: -3.2930589, z: 0}
+  m_LocalPosition: {x: 3.227, y: -4.201, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_Children:
   - {fileID: 4545505141215856}
@@ -122,6 +124,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!58 &58556839981518236
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1288388784936066}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.32
 --- !u!58 &58722531127928502
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -154,6 +171,42 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114067218247777880
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1288388784936066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2be8c9ba9bad9c41a33754ecc2479f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _coll: {fileID: 58722531127928502}
+  _triggerColl: {fileID: 58556839981518236}
+  _sfx:
+    library:
+    - tag: Hurt
+      audio: {fileID: 8300000, guid: a369713db596e224fb0d71294756409e, type: 3}
+    - tag: Death
+      audio: {fileID: 8300000, guid: 8869c9d000795b648b4b6f68fd5162d4, type: 3}
+    - tag: Alerted
+      audio: {fileID: 8300000, guid: 3a1d0271c2fd6674f96d97e93202a9ac, type: 3}
+  _maxHealth: 100
+  _moveSpeed: 2
+  _damage: 0
+  _scorePoints: 100
+  _knockBackForce: 2.5
+  _patrolDelay: 1
+  _targetMaxDistance: 5
+  _wallCheckSize: {x: 0.44, y: 0.1, z: 0}
+  _groundCheckSize: {x: 0.15, y: 0.06, z: 0}
+  _groundCheckOffset: {x: -0.15, y: -0.27, z: 0}
+  _playerCheckSize: 2.67
+  _playerCheckOffset: 0
+  _drawWallCheck: 1
+  _drawGroundCheck: 1
+  _drawPlayerCheck: 1
 --- !u!212 &212308373572571542
 SpriteRenderer:
   m_ObjectHideFlags: 1

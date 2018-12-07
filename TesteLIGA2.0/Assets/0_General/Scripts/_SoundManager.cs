@@ -43,7 +43,6 @@ public class _SoundManager : MonoBehaviour
 
     public void ChangeSoundState()
     {
-        Debug.Log("True");
         IsSoundEnabled = !IsSoundEnabled;
     }
 }
