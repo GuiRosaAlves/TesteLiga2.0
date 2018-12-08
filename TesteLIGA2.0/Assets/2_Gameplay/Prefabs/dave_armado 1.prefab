@@ -1417,7 +1417,6 @@ MonoBehaviour:
     _bulletPrefab: {fileID: 114647763555588328, guid: 4599adef83a94b9448d99fb3bfee4def,
       type: 2}
     _fireRate: 2
-    _shakeAmt: 2
   _bombPrefab: {fileID: 114352816458000952, guid: 71e2f8247ebebd54fb90a891a578fbb7,
     type: 2}
   _canMove: 1

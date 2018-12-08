@@ -66,6 +66,7 @@ public class Character : MonoBehaviour
 	
 	private void Awake()
 	{
+		EndInvencibility();
 		RB = GetComponent<Rigidbody2D>();
 		Anim = GetComponent<Animator>();
 		CurrHP = _maxHP;
@@ -113,11 +114,6 @@ public class Character : MonoBehaviour
 		{
 			if (IsGrounded && _canPlaceBomb)
 				_placeBombRequest = true;
-		}
-
-		if (Input.GetKeyDown(KeyCode.X)) //TODO: REMOVE LATER
-		{
-			TakeDamage(1);
 		}
 	}
 
@@ -209,6 +205,8 @@ public class Character : MonoBehaviour
 
 		if (_App.SoundManager)
 			_App.SoundManager.Play(_sfx.Get("Hurt").audio);
+		if (CameraController.instance)
+			CameraController.instance.ScreenShake();
 
 		StartInvencibility();
 		Invoke("EndInvencibility", _invencibilityTime);

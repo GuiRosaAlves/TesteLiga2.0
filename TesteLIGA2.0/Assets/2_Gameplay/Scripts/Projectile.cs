@@ -27,7 +27,7 @@ public class Projectile : MonoBehaviour
             enemy.TakeDamage(_damage, transform.right, enemy.KnockBackForce);
         }
 
-        if (coll.gameObject.layer == LayerMask.GetMask("Ground"))
+        if (coll.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
             if (_App.SoundManager)
                 _App.SoundManager.Play(_sfx.Get("Impact").audio);

@@ -6,13 +6,11 @@ public class MenuPanel : MonoBehaviour
 {
     [Header("Menu Panel")]
     [SerializeField] private Animator[] _btnAnims;
-//    private MenuController _controller;
     
     public Animator Anim { get; private set; }
 
     private void Awake()
     {
-//        _controller = FindObjectOfType<MenuController>();
         Anim = GetComponent<Animator>();
     }
 
@@ -22,10 +20,6 @@ public class MenuPanel : MonoBehaviour
         {
             _btnAnims[i].Rebind();
             _btnAnims[i].Play("Normal");
-//            _btnAnims[i].CrossFade("Normal", 0f);
-//            _btnAnims[i].Update(0f);
-//            _btnAnims[i].Update(0f);
-//            _btnAnims[i].Update(0f);
         }
     }
 }

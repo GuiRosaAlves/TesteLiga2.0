@@ -22,6 +22,8 @@ public class Bomb : MonoBehaviour
     {
         if (_App.SoundManager)
             _App.SoundManager.Play(_sfx.Get("explode").audio);
+        if (CameraController.instance)
+            CameraController.instance.ScreenShake();
         
         List<GameObject> objectsInRange = new List<GameObject>();
         RaycastHit2D[] hitResult;
@@ -38,7 +40,6 @@ public class Bomb : MonoBehaviour
             }
         }
 
-        //TODO: Modify This Garbage code
         for (int i = 0; i < objectsInRange.Count; i++)
         {
             Vector2 knockBackDir = objectsInRange[i].transform.position - transform.position;

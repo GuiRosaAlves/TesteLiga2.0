@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum EnemyStates { Patrol, Follow, Count }
 public class Enemy2 : MonoBehaviour
 {
     [Header("References")]
@@ -70,6 +71,11 @@ public class Enemy2 : MonoBehaviour
             RaycastHit2D hitResult = Physics2D.Raycast(transform.position + (_moveVector * _playerCheckOffset), _moveVector, _playerCheckSize, LayerMask.GetMask("Player"));
             if (hitResult)
             {
+                var hit = Physics2D.Raycast(transform.position, (hitResult.point - (Vector2)transform.position),
+                    Vector2.Distance(transform.position, hitResult.point), LayerMask.GetMask("Ground"));
+                if (hit)
+                    return;
+                
                 _targetPosition = hitResult.transform;
                 if (_App.SoundManager)
                     _App.SoundManager.Play(_sfx.Get("Alerted").audio);
@@ -106,7 +112,6 @@ public class Enemy2 : MonoBehaviour
         {
             var knockBackDir = transform.position - player.transform.position;
             knockBackDir.Normalize();
-            //TODO: Fix the knockback direction
             player.TakeDamage(_damage, -knockBackDir, _knockBackForce);
             
             if (RB)
@@ -190,8 +195,11 @@ public class Enemy2 : MonoBehaviour
     }
     protected void Follow()
     {
-        _moveVector = _targetPosition.position - transform.position;
-        _moveVector.Normalize();
+        if (Math.Abs(transform.position.x - _targetPosition.position.x) > 0.3f)
+        {
+            _moveVector = _targetPosition.position - transform.position;
+            _moveVector.Normalize();
+        }
     }
     protected void AllowMovement() { _moveRequest = true; }
     protected void StopMovement() {  _moveRequest = false;  }

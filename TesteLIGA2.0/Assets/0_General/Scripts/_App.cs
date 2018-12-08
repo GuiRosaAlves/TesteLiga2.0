@@ -10,13 +10,6 @@ public class _App : MonoBehaviour
 
     [SerializeField] private float _sleepTime = 0.1f;
     public MenuItems nextMenuItem { get; set; }
-//#if UNITY_EDITOR
-//    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
-//    public static void PreloadScene()
-//    {
-//        SceneManager.LoadScene(0);
-//    }
-//#endif
     
     private void Awake()
     {

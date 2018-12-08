@@ -198,12 +198,12 @@ MonoBehaviour:
   _scorePoints: 100
   _knockBackForce: 2.5
   _patrolDelay: 2
-  _targetMaxDistance: 5
+  _targetMaxDistance: 3
   _wallCheckSize: {x: 0.44, y: 0.1, z: 0}
   _groundCheckSize: {x: 0.15, y: 0.15, z: 0}
   _groundCheckOffset: {x: 0.18, y: -0.27, z: 0}
   _playerCheckSize: 2.67
-  _playerCheckOffset: 0.31
+  _playerCheckOffset: 0.37
   _drawWallCheck: 1
   _drawGroundCheck: 1
   _drawPlayerCheck: 1

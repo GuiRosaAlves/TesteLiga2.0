@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
+    <e p="\6da43e45" t="IncludeRecursive" />
+    <e p="\app" t="IncludeRecursive" />
     <e p="C:\Users\guilh\.Rider2018.2\system\extResources" t="IncludeRecursive" />
     <e p="C:\Users\guilh\.Rider2018.2\system\resharper-host\Local\Transient\ReSharperHost\v182\SolutionCaches\_TesteLIGA2.0.-1030360069.00" t="ExcludeRecursive" />
     <e p="C:\Users\guilh\Documents\GitHub\TesteLIGA2.0\TesteLIGA2.0" t="IncludeRecursive">
@@ -32,7 +34,6 @@
           <e p="CameraController.cs" t="Include" />
           <e p="Character.cs" t="Include" />
           <e p="CollectableBomb.cs" t="Include" />
-          <e p="Enemy.cs" t="Include" />
           <e p="Enemy2.cs" t="Include" />
           <e p="EnemyManager.cs" t="Include" />
           <e p="Gun.cs" t="Include" />
