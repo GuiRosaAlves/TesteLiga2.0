@@ -6,7 +6,7 @@ public class MenuPanel : MonoBehaviour
 {
     [Header("Menu Panel")]
     [SerializeField] private Animator[] _btnAnims;
-    
+    public Animator[] Btns { get { return _btnAnims; } }
     public Animator Anim { get; private set; }
 
     private void Awake()
